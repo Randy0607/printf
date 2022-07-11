@@ -1,78 +1,74 @@
 #include "main.h"
 
 /**
- * ch - prints out a character
- * @character: character to be printed
- * Return: number of characters
+ * print_char - Entry point
+ *
+ * @list: list of arguments
+ *
+ * Description: Prints character to std out
+ *
+ * Return: Amount of characters printed.
  */
 
-int ch(va_list character)
+int print_char(va_list list)
 {
-	_putchar(va_arg(character, int));
+	_putchar(va_arg(list, int));
 	return (1);
 }
 
 /**
- * str - prints string to stdout
- * @string: list
- * Return: number of characters printed
+ * print_string - Entry point
+ *
+ * @list: list of arguments
+ *
+ * Description:  Prints a string to stdout
+ *
+ * Return: Amount of characters printed.
  */
 
-int str(va_list string)
+int print_string(va_list list)
 {
-	int len;
+	int i;
 	char *str;
 
-	str = va_arg(string, char *);
+	str = va_arg(list, char *);
 	if (str == NULL)
 		str = "(null)";
-	len = 0;
-
-	while (str[len] != '\0')
-		len += _putchar(str[len]);
-	return (len);
+	for (i = 0; str[i] != '\0'; i++)
+		_putchar(str[i]);
+	return (i);
 }
 
 /**
- * _int - prints integer
- * @integ: int to be printed
- * Return: number of characters printed
+ * print_percent - Entry point
+ *
+ * @list: list of arguments
+ *
+ * Description: Prints the percent symbol to std out
+ *
+ * Return: Amount of characters printed.
  */
 
-int _int(va_list integ)
-{
-	int len;
-
-	len = print_int(integ);
-	return (len);
-}
-
-/**
- * _ui - prints unsigned int
- * @unsign: list of unsigned ints
- * Return: num count
- */
-
-int _ui(va_list unsign)
-{
-	unsigned int num;
-
-	num = va_arg(num, unsigned int);
-	if (num == 0)
-		return (print_unsigned_int(num));
-	if (num < 1)
-		return (-1);
-	return (print_unsigned_int(num));
-}
-
-/**
- * _percent - prints percentage symbol
- * @sym: list of arguments
- * Return: number of characters printed
- */
-
-int _percent(__attribute__((unused))va_list sym)
+int print_percent(__attribute__((unused))va_list list)
 {
 	_putchar('%');
 	return (1);
+}
+
+/**
+ * print_integer - Entry Point
+ *
+ * @list: list of arguments
+ *
+ * Description: Prints an integer
+ *
+ * Return: Amount of characters printed.
+ */
+
+int print_integer(va_list list)
+{
+	int num_length;
+
+	num_length = print_integer(list);
+	return (num_length);
 }
