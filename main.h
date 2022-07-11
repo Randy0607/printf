@@ -29,5 +29,5 @@ int _hex_l(va_list hexa);
 int _hex_u(va_list hexa);
 int _strlen(char *s);
 int _bin(va_list bin);
-int write_char(char c);
+int _putchar(char c);
 #endif
