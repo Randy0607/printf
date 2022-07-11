@@ -31,12 +31,12 @@ int print_op(const char *format, fmt_t *print_arr, va_list list)
 				if (a == '\0')
 					return (-1);
 				if (a != '%')
-					count += _putchar('%');
-				count += _putchar(a);
+					count += putchar('%');
+				count += putchar(a);
 			}
 		}
 		else
-			count += _putchar(a);
+			count += putchar(a);
 		b++;
 		a = format[b];
 	}
