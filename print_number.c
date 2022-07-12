@@ -41,3 +41,25 @@ int print_number(va_list args)
 
 	return (len);
 }
+
+/**
+ * print_unsigned_int - prints unsigned integer
+ * @n: unsigned integer to be printed
+ * Return: numbers printed
+ */
+
+int print_unsigned_int(unsigned int n)
+{
+	int div = 1, len = 0;
+	unsigned int num = n;
+
+	while (num / div > 9)
+		div *= 10;
+	while (div != 0)
+	{
+		len += _putchar('0' + num / div);
+		num %= div;
+		div /= 10;
+	}
+	return (len);
+}

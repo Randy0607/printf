@@ -29,11 +29,18 @@ int print_percent(va_list);
 int print_integer(va_list);
 int print_number(va_list);
 int print_binary(va_list);
+int print_reversed(va_list arg);
+int rot13(va_list);
+int unsigned_integer(va_list);
+int print_octal(va_list list);
+int print_hex(va_list list);
+int print_heX(va_list list);
 
 /** Helper Functions */
 unsigned int base_len(unsigned int num, int base);
 char *rev_string(char *s);
 void write_base(char *str);
 char *_memcpy(char *dest, char *src, unsigned int n);
+int print_unsigned_int(unsigned int);
 
 #endif /*MAIN_H_*/

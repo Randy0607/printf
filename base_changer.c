@@ -36,7 +36,7 @@ int print_binary(va_list list)
 	if (rev_str == NULL)
 		return (-1);
 	write_base(rev_str);
-	free(rev_str);
 	free(str);
+	free(rev_str);
 	return (len);
 }
