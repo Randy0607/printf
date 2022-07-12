@@ -8,25 +8,21 @@
 
 /**
  * struct convert - Entry point
- *
  * Description: Defines a structure for symbols and functions
- *
  * @sym: The operator
  * @f: The function associated
  */
 
 struct convert
 {
-
 	char *sym;
 	int (*f)(va_list);
-
 };
-typedef struct convert con_vert;
+typedef struct convert conver_t;
 
 
 int _putchar(char);
-int parser(const char *format, con_vert f_list[], va_list arg_list);
+int parser(const char *format, conver_t f_list[], va_list arg_list);
 int _printf(const char *format, ...);
 int print_char(va_list);
 int print_string(va_list);
