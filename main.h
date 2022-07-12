@@ -2,7 +2,6 @@
 #define MAIN_H
 
 #include <stdarg.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -29,5 +28,12 @@ int print_string(va_list);
 int print_percent(va_list);
 int print_integer(va_list);
 int print_number(va_list);
+int print_binary(va_list);
+
+/** Helper Functions */
+unsigned int base_len(unsigned int num, int base);
+char *rev_string(char *s);
+void write_base(char *str);
+char *_memcpy(char *dest, char *src, unsigned int n);
 
 #endif /*MAIN_H_*/
