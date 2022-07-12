@@ -37,8 +37,8 @@ int print_hex(va_list list);
 int print_heX(va_list list);
 
 /** Helper Functions */
-unsigned int base_len(unsigned int num, int base);
-char *rev_string(char *s);
+unsigned int base_len(unsigned int, int);
+char *rev_string(char *);
 void write_base(char *str);
 char *_memcpy(char *dest, char *src, unsigned int n);
 int print_unsigned_int(unsigned int);
