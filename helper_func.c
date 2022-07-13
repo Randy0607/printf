@@ -26,11 +26,16 @@ unsigned int base_len(unsigned int num, int base)
 char *rev_string(char *s)
 {
 	int i, len = 0;
+<<<<<<< HEAD
 	buff *dest;
+=======
+	char *ptr;
+>>>>>>> parent of 6524cb6... team work
 	char tmp;
 
 	while (s[len] != '\0')
 		len++;
+<<<<<<< HEAD
 	dest = malloc(sizeof(buff) * len + 1);
 	if (dest == NULL)
 		return (NULL);
@@ -42,6 +47,19 @@ char *rev_string(char *s)
 		dest->buffer[i] = tmp;
 	}
 	return (s);
+=======
+	ptr = malloc(sizeof(char) * len + 1);
+	if (ptr == NULL)
+		return (NULL);
+	_memcpy(ptr, s, len);
+	for (i = 0; i < len; i++, len--)
+	{
+		tmp = ptr[len - 1];
+		ptr[len - 1] = ptr[i];
+		ptr[i] = tmp;
+	}
+	return (ptr);
+>>>>>>> parent of 6524cb6... team work
 }
 
 /**
@@ -66,11 +84,16 @@ void write_base(char *str)
  * Return: returns a pointer to dest.
  */
 
+<<<<<<< HEAD
 unsigned int _memcpy(buff *dest, const char *src, unsigned int n)
+=======
+char *_memcpy(char *dest, char *src, unsigned int n)
+>>>>>>> parent of 6524cb6... team work
 {
 	unsigned int i;
 
 	for (i = 0; i < n; i++)
+<<<<<<< HEAD
 	{
 		*(dest->buffer) = *(src + i);
 		(dest->len)++;
@@ -96,6 +119,11 @@ void free_buff(buff *dest)
 {
 	free(dest->start);
 	free(dest);
+=======
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
+>>>>>>> parent of 6524cb6... team work
 }
 
 /**
@@ -105,6 +133,7 @@ void free_buff(buff *dest)
 
 buff *init_buffer(void)
 {
+<<<<<<< HEAD
 	buff *dest;
 
 	dest = malloc(sizeof(buff));
@@ -120,4 +149,21 @@ buff *init_buffer(void)
 	dest->len = 0;
 
 	return (dest);
+=======
+	buff *result;
+
+	result = malloc(sizeof(buff));
+	if (result == NULL)
+		return (NULL);
+	result->buffer = malloc(sizeof(char) * 1024);
+	if (result->buffer == NULL)
+	{
+		free(result);
+		return (NULL);
+	}
+	result->start = result->buffer;
+	result->len = 0;
+
+	return (result);
+>>>>>>> parent of 6524cb6... team work
 }
