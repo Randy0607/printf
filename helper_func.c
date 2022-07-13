@@ -26,22 +26,22 @@ unsigned int base_len(unsigned int num, int base)
 char *rev_string(char *s)
 {
 	int i, len = 0;
-	char *ptr;
+	buff *dest;
 	char tmp;
 
 	while (s[len] != '\0')
 		len++;
-	ptr = malloc(sizeof(char) * len + 1);
-	if (ptr == NULL)
+	dest = malloc(sizeof(buff) * len + 1);
+	if (dest == NULL)
 		return (NULL);
-	_memcpy(ptr, s, len);
+	_memcpy(dest, s, len);
 	for (i = 0; i < len; i++, len--)
 	{
-		tmp = ptr[len - 1];
-		ptr[len - 1] = ptr[i];
-		ptr[i] = tmp;
+		tmp = dest->buffer[len - 1];
+		dest->buffer[len - 1] = dest->buffer[i];
+		dest->buffer[i] = tmp;
 	}
-	return (ptr);
+	return (s);
 }
 
 /**
@@ -66,14 +66,36 @@ void write_base(char *str)
  * Return: returns a pointer to dest.
  */
 
-char *_memcpy(char *dest, char *src, unsigned int n)
+unsigned int _memcpy(buff *dest, const char *src, unsigned int n)
 {
 	unsigned int i;
 
 	for (i = 0; i < n; i++)
-		dest[i] = src[i];
-	dest[i] = '\0';
-	return (dest);
+	{
+		*(dest->buffer) = *(src + i);
+		(dest->len)++;
+
+		if (dest->len == 1024)
+		{
+			write(1, dest->start, dest->len);
+			dest->buffer = dest->start;
+			dest->len = 0;
+		}
+		else
+			(dest->buffer)++;
+	}
+	return (n);
+}
+
+/**
+ * free_buff - frees memory space for buff
+ * @dest: buff struct to b free
+ */
+
+void free_buff(buff *dest)
+{
+	free(dest->start);
+	free(dest);
 }
 
 /**
@@ -83,19 +105,19 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 
 buff *init_buffer(void)
 {
-	buff *result;
+	buff *dest;
 
-	result = malloc(sizeof(buff));
-	if (result == NULL)
+	dest = malloc(sizeof(buff));
+	if (dest == NULL)
 		return (NULL);
-	result->buffer = malloc(sizeof(char) * 1024);
-	if (result->buffer == NULL)
+	dest->buffer = malloc(sizeof(char) * 1024);
+	if (dest->buffer == NULL)
 	{
-		free(result);
+		free(dest);
 		return (NULL);
 	}
-	result->start = result->buffer;
-	result->len = 0;
+	dest->start = dest->buffer;
+	dest->len = 0;
 
-	return (result);
+	return (dest);
 }
