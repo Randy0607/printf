@@ -12,6 +12,13 @@
  * @f: The function associated
  */
 
+typedef struct buff_
+{
+	char *buffer;
+	char *start;
+	unsigned int len;
+} buff;
+
 struct convert
 {
 	char *sym;
@@ -42,5 +49,6 @@ char *rev_string(char *);
 void write_base(char *str);
 char *_memcpy(char *dest, char *src, unsigned int n);
 int print_unsigned_int(unsigned int);
+buff *init_buffer(void);
 
 #endif /*MAIN_H_*/

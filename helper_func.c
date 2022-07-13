@@ -75,3 +75,27 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 	dest[i] = '\0';
 	return (dest);
 }
+
+/**
+ * init_buffer - initializes a variable of struct type buff
+ * Return: pointer to initialised buff
+ */
+
+buff *init_buffer(void)
+{
+	buff *result;
+
+	result = malloc(sizeof(buff));
+	if (result == NULL)
+		return (NULL);
+	result->buffer = malloc(sizeof(char) * 1024);
+	if (result->buffer == NULL)
+	{
+		free(result);
+		return (NULL);
+	}
+	result->start = result->buffer;
+	result->len = 0;
+
+	return (result);
+}
